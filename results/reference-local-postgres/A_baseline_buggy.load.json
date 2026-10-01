@@ -1,0 +1,20 @@
+{
+  "label": "A_baseline_buggy",
+  "requests": 50,
+  "concurrency": 2,
+  "success": 50,
+  "failed": 0,
+  "error_rate_pct": 0.0,
+  "throughput_rps": 8.3,
+  "latency_ms": {
+    "min": 66.9,
+    "median": 233.0,
+    "p95": 396.9,
+    "p99": 412.2,
+    "max": 412.2
+  },
+  "status_codes": {
+    "200": 50
+  },
+  "db_pool_peak_checked_out": 2.0
+}

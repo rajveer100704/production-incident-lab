@@ -1,0 +1,15 @@
+During the buggy load, PostgreSQL was inspected with:
+
+SELECT pid, state, now()-xact_start AS xact_age, wait_event_type, wait_event, query
+FROM pg_stat_activity
+WHERE datname='orders' AND state='idle in transaction';
+
+Observed result during load:
+
+- 5 rows
+- state = idle in transaction for all 5 sessions
+- query text showed the orders INSERT statement
+- wait_event_type = Client
+- wait_event = ClientRead
+
+This shows the application had already issued its SQL and the PostgreSQL sessions were waiting while the transactions remained open.

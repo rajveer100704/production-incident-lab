@@ -1,0 +1,74 @@
+{
+  "annotations": {"list": []},
+  "editable": false,
+  "graphTooltip": 0,
+  "panels": [
+    {
+      "id": 1,
+      "type": "stat",
+      "title": "5xx Error Rate",
+      "gridPos": {"h": 5, "w": 6, "x": 0, "y": 0},
+      "targets": [{"refId": "A", "expr": "100 * sum(rate(http_requests_total{route=\"/orders\",status=~\"5..\"}[1m])) / clamp_min(sum(rate(http_requests_total{route=\"/orders\"}[1m])), 0.001)"}],
+      "fieldConfig": {"defaults": {"unit": "percent", "decimals": 1}, "overrides": []}
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "HTTP p95 latency",
+      "gridPos": {"h": 8, "w": 9, "x": 6, "y": 0},
+      "targets": [{"refId": "A", "expr": "1000 * histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{route=\"/orders\",method=\"POST\"}[1m])))", "legendFormat": "p95 ms"}],
+      "fieldConfig": {"defaults": {"unit": "ms"}, "overrides": []}
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "DB pool usage",
+      "gridPos": {"h": 8, "w": 9, "x": 15, "y": 0},
+      "targets": [
+        {"refId": "A", "expr": "db_pool_checked_out", "legendFormat": "checked out"},
+        {"refId": "B", "expr": "db_pool_size", "legendFormat": "pool size"}
+      ],
+      "fieldConfig": {"defaults": {"unit": "short"}, "overrides": []}
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "DB acquire p95",
+      "gridPos": {"h": 8, "w": 8, "x": 0, "y": 8},
+      "targets": [{"refId": "A", "expr": "1000 * histogram_quantile(0.95, sum by (le) (rate(db_connection_acquire_seconds_bucket[1m])))", "legendFormat": "p95 ms"}],
+      "fieldConfig": {"defaults": {"unit": "ms"}, "overrides": []}
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "DB connection hold p95",
+      "gridPos": {"h": 8, "w": 8, "x": 8, "y": 8},
+      "targets": [{"refId": "A", "expr": "1000 * histogram_quantile(0.95, sum by (le) (rate(db_connection_hold_seconds_bucket[1m])))", "legendFormat": "p95 ms"}],
+      "fieldConfig": {"defaults": {"unit": "ms"}, "overrides": [] }
+    },
+    {
+      "id": 6,
+      "type": "timeseries",
+      "title": "Downstream p95",
+      "gridPos": {"h": 8, "w": 8, "x": 16, "y": 8},
+      "targets": [{"refId": "A", "expr": "1000 * histogram_quantile(0.95, sum by (le) (rate(downstream_request_duration_seconds_bucket[1m])))", "legendFormat": "p95 ms"}],
+      "fieldConfig": {"defaults": {"unit": "ms"}, "overrides": [] }
+    },
+    {
+      "id": 7,
+      "type": "timeseries",
+      "title": "DB pool timeouts / sec",
+      "gridPos": {"h": 6, "w": 8, "x": 0, "y": 16},
+      "targets": [{"refId": "A", "expr": "rate(db_pool_timeout_total[1m])", "legendFormat": "timeouts/s"}],
+      "fieldConfig": {"defaults": {"unit": "reqps"}, "overrides": [] }
+    }
+  ],
+  "schemaVersion": 39,
+  "style": "dark",
+  "tags": ["production", "incident", "postgres", "fastapi"],
+  "templating": {"list": []},
+  "time": {"from": "now-15m", "to": "now"},
+  "timezone": "browser",
+  "title": "Production Incident Lab",
+  "version": 1
+}

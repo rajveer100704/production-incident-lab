@@ -1,0 +1,22 @@
+{
+  "label": "canonical_buggy_500x20",
+  "environment": "Docker Compose, Docker Desktop 4.44.3 / Engine 28.3.2",
+  "requests": 500,
+  "concurrency": 20,
+  "success": 186,
+  "failed": 314,
+  "error_rate_pct": 62.8,
+  "throughput_rps": 42.4,
+  "latency_ms": {
+    "min": 138.3,
+    "median": 404.1,
+    "p95": 760.0,
+    "p99": 877.6,
+    "max": 1204.5
+  },
+  "status_codes": {
+    "200": 186,
+    "503": 314
+  },
+  "db_pool_peak_checked_out": 5.0
+}

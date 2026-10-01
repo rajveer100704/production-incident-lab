@@ -1,0 +1,20 @@
+{
+  "label": "C_fixed",
+  "requests": 200,
+  "concurrency": 20,
+  "success": 200,
+  "failed": 0,
+  "error_rate_pct": 0.0,
+  "throughput_rps": 70.8,
+  "latency_ms": {
+    "min": 66.9,
+    "median": 256.6,
+    "p95": 399.0,
+    "p99": 451.1,
+    "max": 497.8
+  },
+  "status_codes": {
+    "200": 200
+  },
+  "db_pool_peak_checked_out": 2.0
+}

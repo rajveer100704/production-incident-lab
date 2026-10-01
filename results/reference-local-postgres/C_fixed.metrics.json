@@ -1,0 +1,28 @@
+{
+  "db_connection_acquire_seconds": {
+    "count": 200,
+    "p50_le_s": 0.005,
+    "p95_le_s": 0.005
+  },
+  "db_connection_hold_seconds": {
+    "count": 200,
+    "p50_le_s": 0.005,
+    "p95_le_s": 0.01
+  },
+  "db_query_duration_seconds": {
+    "count": 201,
+    "p50_le_s": 0.005,
+    "p95_le_s": 0.01
+  },
+  "downstream_request_duration_seconds": {
+    "count": 200,
+    "p50_le_s": 0.3,
+    "p95_le_s": 0.5
+  },
+  "db_pool_timeout_total": 0.0,
+  "downstream": {
+    "ok": 200.0,
+    "timeout": null,
+    "error": null
+  }
+}

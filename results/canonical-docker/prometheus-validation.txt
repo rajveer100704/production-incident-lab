@@ -1,0 +1,25 @@
+Prometheus validation captured from the running Docker stack.
+
+Target health query:
+up{job="order-api"}
+Observed: 1
+
+Pool size:
+db_pool_size
+Observed: 5
+
+Pool occupancy:
+db_pool_checked_out
+Observed during incident: reached 5
+
+Fixed pool-timeout delta:
+increase(db_pool_timeout_total[15m])
+Observed in the captured fixed window: 0
+
+Histogram p95 queries used for connection hold/acquire latency:
+
+histogram_quantile(0.95, sum by (le) (rate(db_connection_hold_seconds_bucket[1m])))
+
+histogram_quantile(0.95, sum by (le) (rate(db_connection_acquire_seconds_bucket[1m])))
+
+The direct Prometheus graphs are supporting telemetry over a time window. The exact request-level totals and percentiles in the canonical benchmark come from scripts/load_test.py.

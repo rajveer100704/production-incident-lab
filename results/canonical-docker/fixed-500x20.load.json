@@ -1,0 +1,22 @@
+{
+  "label": "canonical_fixed_500x20",
+  "environment": "Docker Compose, Docker Desktop 4.44.3 / Engine 28.3.2",
+  "requests": 500,
+  "concurrency": 20,
+  "success": 499,
+  "failed": 1,
+  "error_rate_pct": 0.2,
+  "throughput_rps": 63.9,
+  "latency_ms": {
+    "min": 68.1,
+    "median": 284.4,
+    "p95": 626.6,
+    "p99": 796.9,
+    "max": 1025.5
+  },
+  "status_codes": {
+    "200": 499,
+    "503": 1
+  },
+  "db_pool_peak_checked_out": 5.0
+}

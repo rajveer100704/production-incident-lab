@@ -1,0 +1,33 @@
+Canonical Docker fixed load test captured from Windows PowerShell on 2026-10-01.
+
+Command:
+python scripts/load_test.py --base http://localhost:8000 --requests 500 --concurrency 20
+
+Output:
+{
+  "label": "run",
+  "requests": 500,
+  "concurrency": 20,
+  "success": 499,
+  "failed": 1,
+  "error_rate_pct": 0.2,
+  "throughput_rps": 63.9,
+  "latency_ms": {
+    "min": 68.1,
+    "median": 284.4,
+    "p95": 626.6,
+    "p99": 796.9,
+    "max": 1025.5
+  },
+  "status_codes": {
+    "200": 499,
+    "503": 1
+  },
+  "db_pool_peak_checked_out": 5.0
+}
+
+Captured application log for the single 503:
+error_type = downstream_timeout
+request duration = 433.5 ms
+
+No db_pool_timeout was present in the captured 503 log lines for this canonical fixed run.

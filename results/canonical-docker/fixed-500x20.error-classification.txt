@@ -1,0 +1,5 @@
+Canonical fixed 500/20 run: one HTTP 503 was recorded by application logs.
+Classification: downstream_timeout.
+No db_pool_timeout was present in the captured 503 log output for this canonical fixed run.
+Prometheus: increase(db_pool_timeout_total[15m]) remained at 0 for the captured fixed window.
+PostgreSQL post-run check: 0 rows with state = 'idle in transaction'.

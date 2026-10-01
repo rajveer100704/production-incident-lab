@@ -1,0 +1,21 @@
+{
+  "label": "additional_fixed_200x20",
+  "environment": "Docker Compose, Docker Desktop 4.44.3 / Engine 28.3.2",
+  "requests": 200,
+  "concurrency": 20,
+  "success": 200,
+  "failed": 0,
+  "error_rate_pct": 0.0,
+  "throughput_rps": 45.4,
+  "latency_ms": {
+    "min": 70.9,
+    "median": 288.5,
+    "p95": 1485.5,
+    "p99": 1632.3,
+    "max": 1691.2
+  },
+  "status_codes": {
+    "200": 200
+  },
+  "db_pool_peak_checked_out": 5.0
+}
